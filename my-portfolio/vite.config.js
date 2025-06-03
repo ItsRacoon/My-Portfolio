@@ -5,12 +5,9 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    hmr: {
-      port: 5176, // Use a different port
-      host: 'localhost'
-    },
     host: 'localhost',
-    port: 5173
+    port: 5173,
+    hmr: true
   },
   optimizeDeps: {
     include: ['three', '@react-three/fiber', '@react-three/drei']

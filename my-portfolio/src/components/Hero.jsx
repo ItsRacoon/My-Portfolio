@@ -2,6 +2,7 @@ import React, { useState, useEffect, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Float, Text3D, Environment } from '@react-three/drei';
+import { EffectComposer, Bloom, ChromaticAberration } from '@react-three/postprocessing';
 import { Link } from 'react-scroll';
 import { ChevronDown, Download, Mail } from 'lucide-react';
 import FloatingLaptop from './3D/FloatingLaptop';
@@ -85,7 +86,7 @@ const Hero = () => {
       <motion.div
         className="absolute inset-0 pointer-events-none"
         style={{
-          transform: `translate(${mousePosition.x * 20}px, ${mousePosition.y * 20}px)`,
+          transform: `translate(${mousePosition.x * 1.5}px, ${mousePosition.y * 1.5}px)`,
         }}
       >
         {[...Array(50)].map((_, i) => (
@@ -240,8 +241,17 @@ const Hero = () => {
                       }}
                       onError={handleCanvasError}
                     >
-                      <ambientLight intensity={0.8} />
-                      <directionalLight position={[10, 10, 5]} intensity={0.8} />
+                      <ambientLight intensity={0.4} />
+                      <directionalLight position={[10, 10, 5]} intensity={1.2} castShadow />
+                      <pointLight position={[-10, -10, -5]} intensity={0.5} color="#4299e1" />
+                      <spotLight 
+                        position={[0, 10, 0]} 
+                        angle={0.3} 
+                        penumbra={1} 
+                        intensity={0.8} 
+                        color="#ffffff"
+                        castShadow
+                      />
                       <Float
                         speed={1.5}
                         rotationIntensity={0.5}
@@ -257,6 +267,16 @@ const Hero = () => {
                         enableDamping
                         dampingFactor={0.05}
                       />
+                      <EffectComposer>
+                        <Bloom 
+                          intensity={0.5}
+                          luminanceThreshold={0.9}
+                          luminanceSmoothing={0.9}
+                        />
+                        <ChromaticAberration 
+                          offset={[0.001, 0.001]}
+                        />
+                      </EffectComposer>
                     </Canvas>
                   </Suspense>
                 </ErrorBoundary>

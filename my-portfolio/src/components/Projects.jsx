@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, Eye, Filter, X, Calendar, Tag } from 'lucide-react';
 
@@ -7,6 +7,28 @@ const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('All');
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, threshold: 0.1 });
+
+  // Handle keyboard navigation for modal
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape' && selectedProject) {
+        setSelectedProject(null);
+      }
+    };
+
+    if (selectedProject) {
+      document.addEventListener('keydown', handleKeyDown);
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedProject]);
 
   const projects = [
     {
@@ -330,7 +352,7 @@ const Projects = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 z-50 overflow-y-auto"
             onClick={() => setSelectedProject(null)}
           >
             <motion.div
@@ -338,83 +360,89 @@ const Projects = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="bg-white dark:bg-gray-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+              className="bg-white dark:bg-gray-800 rounded-2xl max-w-lg sm:max-w-2xl w-full max-h-[65vh] sm:max-h-[70vh] my-4 sm:my-8 overflow-hidden flex flex-col shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Modal Header */}
-              <div className="relative">
-                <img 
-                  src={selectedProject.image} 
-                  alt={selectedProject.title}
-                  className="w-full h-64 object-cover rounded-t-2xl"
-                />
+              <div className="relative flex-shrink-0">
+                <div className="w-full h-32 sm:h-40 bg-gray-200 dark:bg-gray-700 rounded-t-2xl overflow-hidden">
+                  <img 
+                    src={selectedProject.image} 
+                    alt={selectedProject.title}
+                    className="w-full h-full object-cover transition-opacity duration-300"
+                    loading="lazy"
+                  />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-t-2xl"></div>
                 
                 <button 
                   onClick={() => setSelectedProject(null)}
-                  className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-gray-900 p-2 rounded-full hover:bg-white transition-colors"
+                  className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-gray-900 p-1.5 rounded-full hover:bg-white hover:scale-110 transition-all duration-200 z-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  aria-label="Close modal"
                 >
-                  <X size={20} />
+                  <X size={16} />
                 </button>
 
-                <div className="absolute bottom-4 left-6 text-white">
-                  <span className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium">
+                <div className="absolute bottom-3 left-4 text-white">
+                  <span className="bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-medium">
                     {selectedProject.category}
                   </span>
                 </div>
               </div>
               
-              {/* Modal Content */}
-              <div className="p-8">
-                <div className="flex items-center gap-4 mb-6">
-                  <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
-                    {selectedProject.title}
-                  </h3>
-                  <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                    selectedProject.status === 'Live' 
-                      ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
-                      : 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
-                  }`}>
-                    {selectedProject.status}
-                  </span>
-                </div>
-                
-                <p className="text-gray-700 dark:text-gray-300 mb-8 leading-relaxed text-lg">
-                  {selectedProject.fullDescription}
-                </p>
-                
-                {/* Technologies */}
-                <div className="mb-8">
-                  <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Technologies Used</h4>
-                  <div className="flex flex-wrap gap-3">
-                    {selectedProject.technologies.map((tech, index) => (
-                      <span 
-                        key={index}
-                        className="bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900 dark:to-purple-900 text-blue-800 dark:text-blue-200 px-4 py-2 rounded-full font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+              {/* Modal Content - Scrollable */}
+              <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">
+                <div className="p-4 sm:p-6">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-4">
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
+                      {selectedProject.title}
+                    </h3>
+                    <span className={`px-2 py-1 rounded-full text-xs font-medium self-start ${
+                      selectedProject.status === 'Live' 
+                        ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                        : 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
+                    }`}>
+                      {selectedProject.status}
+                    </span>
                   </div>
-                </div>
-                
-                {/* Action Buttons */}
-                <div className="flex gap-4">
-                  {selectedProject.liveLink && (
-                    <a 
-                      href={selectedProject.liveLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 py-3 rounded-full hover:from-green-700 hover:to-emerald-700 transition-all duration-300 font-medium"
-                    >
-                      <ExternalLink size={20} />
-                      View Live Project
-                    </a>
-                  )}
-                  <button className="flex items-center gap-2 bg-gradient-to-r from-gray-600 to-gray-700 text-white px-6 py-3 rounded-full hover:from-gray-700 hover:to-gray-800 transition-all duration-300 font-medium">
-                    <Github size={20} />
-                    View Code
-                  </button>
+                  
+                  <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed text-sm sm:text-base">
+                    {selectedProject.fullDescription}
+                  </p>
+                  
+                  {/* Technologies */}
+                  <div className="mb-4">
+                    <h4 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-3">Technologies Used</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.technologies.map((tech, index) => (
+                        <span 
+                          key={index}
+                          className="bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900 dark:to-purple-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded-full font-medium text-xs"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Action Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 pt-3 border-t border-gray-200 dark:border-gray-700">
+                    {selectedProject.liveLink && (
+                      <a 
+                        href={selectedProject.liveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white px-4 py-2 rounded-full hover:from-green-700 hover:to-emerald-700 transition-all duration-300 font-medium text-sm"
+                      >
+                        <ExternalLink size={16} />
+                        View Live Project
+                      </a>
+                    )}
+                    <button className="flex items-center justify-center gap-2 bg-gradient-to-r from-gray-600 to-gray-700 text-white px-4 py-2 rounded-full hover:from-gray-700 hover:to-gray-800 transition-all duration-300 font-medium text-sm">
+                      <Github size={16} />
+                      View Code
+                    </button>
+                  </div>
                 </div>
               </div>
             </motion.div>
