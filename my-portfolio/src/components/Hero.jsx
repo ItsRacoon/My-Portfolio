@@ -74,7 +74,7 @@ const Hero = () => {
   }, [use3D, canvasError]);
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-blue-900 dark:to-indigo-900">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-blue-900 dark:to-indigo-900 pt-20">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
@@ -103,13 +103,13 @@ const Hero = () => {
       </motion.div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-5 gap-12 items-center">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-left"
+            className="text-left lg:col-span-2"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -120,6 +120,31 @@ const Hero = () => {
               <span className="inline-block px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full text-sm font-medium mb-4">
                 Welcome to my portfolio
               </span>
+            </motion.div>
+
+            {/* Profile Picture */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="mb-8 flex justify-center lg:justify-start"
+            >
+              <div className="relative group">
+                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl group-hover:scale-105 transition-transform duration-300">
+                  <img
+                    src="/images/profile.jpg"
+                    alt="Vishesh - Full Stack Developer"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Fallback to a placeholder if image doesn't exist
+                      e.target.src = `https://ui-avatars.com/api/?name=Vishesh&size=200&background=3b82f6&color=ffffff&bold=true`;
+                    }}
+                  />
+                </div>
+                {/* Animated ring around profile picture */}
+                <div className="absolute inset-0 rounded-full border-2 border-blue-500/30 animate-pulse"></div>
+                <div className="absolute -inset-2 rounded-full border border-purple-500/20 animate-ping"></div>
+              </div>
             </motion.div>
 
             <motion.h1
@@ -148,7 +173,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 mb-12"
+              className="flex gap-4"
             >
               <Link
                 to="projects"
@@ -188,16 +213,16 @@ const Hero = () => {
               className="flex gap-8"
             >
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900 dark:text-white">50+</div>
+                <div className="text-2xl font-bold text-gray-900 dark:text-white">20+</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">Projects</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900 dark:text-white">3+</div>
+                <div className="text-2xl font-bold text-gray-900 dark:text-white">1+</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">Years Exp</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900 dark:text-white">100+</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Happy Clients</div>
+                <div className="text-2xl font-bold text-gray-900 dark:text-white">60+</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Students Trained</div>
               </div>
             </motion.div>
           </motion.div>
@@ -207,9 +232,9 @@ const Hero = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="h-[600px] relative"
+            className="relative lg:col-span-3 flex items-center justify-center"
           >
-            <div className="w-full h-full bg-gradient-to-br from-blue-900/20 to-purple-900/20 rounded-2xl flex items-center justify-center relative overflow-hidden">
+            <div className="w-[900px] h-[900px] bg-gradient-to-br from-blue-900/20 to-purple-900/20 rounded-2xl flex items-center justify-center relative overflow-hidden">
               {use3D && !canvasError ? (
                 <ErrorBoundary>
                   <Suspense fallback={<AnimatedLaptop />}>

@@ -25,11 +25,10 @@ const Skills = () => {
       color: 'from-blue-500 to-cyan-500',
       skills: [
         { name: 'React.js', level: 90, description: 'Component-based UI development' },
-        { name: 'JavaScript', level: 85, description: 'Modern ES6+ features' },
-        { name: 'TypeScript', level: 80, description: 'Type-safe development' },
-        { name: 'Tailwind CSS', level: 95, description: 'Utility-first styling' },
-        { name: 'Next.js', level: 75, description: 'Full-stack React framework' },
-        { name: 'Vue.js', level: 70, description: 'Progressive framework' },
+  { name: 'JavaScript (ES6+)', level: 85, description: 'Modern JavaScript syntax and logic' },
+  { name: 'Tailwind CSS', level: 95, description: 'Utility-first CSS framework for styling' },
+  { name: 'HTML5', level: 90, description: 'Semantic and responsive markup' },
+  { name: 'CSS3', level: 85, description: 'Flexbox, Grid, and modern styling techniques' }        
       ]
     },
     backend: {
@@ -37,12 +36,11 @@ const Skills = () => {
       icon: Server,
       color: 'from-green-500 to-emerald-500',
       skills: [
-        { name: 'Node.js', level: 85, description: 'Server-side JavaScript' },
-        { name: 'Python', level: 90, description: 'AI/ML and web development' },
-        { name: 'Java', level: 80, description: 'Enterprise applications' },
-        { name: 'Express.js', level: 85, description: 'Web application framework' },
-        { name: 'FastAPI', level: 75, description: 'Modern Python API framework' },
-        { name: 'Spring Boot', level: 70, description: 'Java microservices' },
+         { name: 'Node.js', level: 85, description: 'Server-side JavaScript runtime' },
+  { name: 'Express.js', level: 85, description: 'Fast web framework for Node.js' },
+  { name: 'Spring Boot', level: 70, description: 'Java-based microservice framework' },
+  { name: 'Python', level: 90, description: 'Scripting and backend logic, ML API support' },
+  { name: 'Java', level: 80, description: 'OOP, Android, and server-side applications' }
       ]
     },
     database: {
@@ -50,26 +48,24 @@ const Skills = () => {
       icon: Database,
       color: 'from-purple-500 to-pink-500',
       skills: [
-        { name: 'MongoDB', level: 85, description: 'NoSQL document database' },
-        { name: 'PostgreSQL', level: 80, description: 'Relational database' },
-        { name: 'MySQL', level: 85, description: 'Popular SQL database' },
-        { name: 'Redis', level: 70, description: 'In-memory data store' },
-        { name: 'AWS', level: 75, description: 'Cloud services' },
-        { name: 'Docker', level: 80, description: 'Containerization' },
-      ]
+  { name: 'MongoDB', level: 85, description: 'NoSQL document database (Atlas used)' },
+  { name: 'MySQL', level: 85, description: 'Structured query language and relational DBs' },
+  { name: 'PostgreSQL', level: 80, description: 'Advanced relational database with features' },
+  { name: 'Docker', level: 80, description: 'Containerization and app deployment' }
+]
+
     },
     aiml: {
       title: 'AI/ML & Data Science',
       icon: Brain,
       color: 'from-orange-500 to-red-500',
       skills: [
-        { name: 'TensorFlow', level: 80, description: 'Deep learning framework' },
-        { name: 'PyTorch', level: 75, description: 'Machine learning library' },
-        { name: 'Pandas', level: 90, description: 'Data manipulation' },
-        { name: 'NumPy', level: 85, description: 'Numerical computing' },
-        { name: 'Scikit-learn', level: 80, description: 'Machine learning tools' },
-        { name: 'Matplotlib', level: 85, description: 'Data visualization' },
-      ]
+  { name: 'Pandas', level: 90, description: 'Data manipulation and analysis' },
+  { name: 'NumPy', level: 85, description: 'Numerical computing with arrays' },
+  { name: 'Scikit-learn', level: 80, description: 'Machine learning models and pipelines' },
+  { name: 'Matplotlib', level: 85, description: 'Data visualization and plotting' }
+]
+
     }
   };
 

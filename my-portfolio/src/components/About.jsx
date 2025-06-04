@@ -32,10 +32,10 @@ const About = () => {
   };
 
   const stats = [
-    { icon: Code, label: "Projects Completed", value: "50+", color: "from-blue-500 to-cyan-500" },
+    { icon: Code, label: "Projects Completed", value: "20+", color: "from-blue-500 to-cyan-500" },
     { icon: Brain, label: "Technologies Mastered", value: "15+", color: "from-purple-500 to-pink-500" },
-    { icon: Users, label: "Students Trained", value: "100+", color: "from-green-500 to-emerald-500" },
-    { icon: Award, label: "Years Experience", value: "3+", color: "from-orange-500 to-red-500" },
+    { icon: Users, label: "Students Trained", value: "60+", color: "from-green-500 to-emerald-500" },
+    { icon: Award, label: "Years Experience", value: "1+", color: "from-orange-500 to-red-500" },
   ];
 
   return (
