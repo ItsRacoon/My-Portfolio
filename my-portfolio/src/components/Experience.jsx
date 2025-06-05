@@ -1,4 +1,9 @@
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+
 const Experience = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, threshold: 0.1 });
   const experiences = [
     {
       title: 'Technical Trainer',
@@ -37,7 +42,7 @@ const Experience = () => {
 
   return (
     <section id="experience" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6" ref={ref}>
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-4">
             Experience & Leadership
@@ -50,7 +55,17 @@ const Experience = () => {
           <div className="mb-12">
             <h3 className="text-2xl font-semibold text-gray-800 mb-6">Professional Experience</h3>
             {experiences.map((exp, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg p-8 mb-6">
+              <motion.div 
+                key={index} 
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                whileHover={{ 
+                  y: -2,
+                  transition: { duration: 0.3, ease: "easeOut" }
+                }}
+                className="bg-white rounded-lg shadow-lg p-8 mb-6 hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-blue-300"
+              >
                 <div className="flex flex-col md:flex-row gap-6">
                   {/* Company Logo */}
                   <div className="flex-shrink-0">
@@ -104,7 +119,7 @@ const Experience = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
@@ -113,7 +128,17 @@ const Experience = () => {
             <h3 className="text-2xl font-semibold text-gray-800 mb-6">Activities & Leadership</h3>
             <div className="grid md:grid-cols-2 gap-6">
               {activities.map((activity, index) => (
-                <div key={index} className="bg-white rounded-lg shadow-lg p-6">
+                <motion.div 
+                  key={index} 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: (index + 1) * 0.1, duration: 0.5 }}
+                  whileHover={{ 
+                    y: -3,
+                    transition: { duration: 0.3, ease: "easeOut" }
+                  }}
+                  className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-green-300"
+                >
                   <div className="mb-4">
                     <div className="flex items-center mb-3">
                       <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-blue-500 rounded-lg flex items-center justify-center mr-4">
@@ -146,7 +171,7 @@ const Experience = () => {
                       </span>
                     ))}
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>

@@ -8,6 +8,7 @@ const Certificates = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, threshold: 0.1 });
   const [selectedCertificate, setSelectedCertificate] = useState(null);
+  const [showAllCertificates, setShowAllCertificates] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -85,6 +86,13 @@ const Certificates = () => {
     }
   ];
 
+  // Determine which certificates to display
+  const displayedCertificates = showAllCertificates 
+    ? certificates 
+    : certificates.slice(0, 3);
+  
+  const hasMoreCertificates = certificates.length > 3;
+
   return (
     <section id="certificates" className="py-20 bg-gray-50 dark:bg-gray-800 relative overflow-hidden">
       {/* Background Elements */}
@@ -115,16 +123,34 @@ const Certificates = () => {
             </p>
           </motion.div>
 
+          {/* Results Count */}
+          <div className="text-center mb-8">
+            <span className="text-sm text-gray-600 dark:text-gray-400">
+              {showAllCertificates ? (
+                <>
+                  {certificates.length} certificate{certificates.length !== 1 ? 's' : ''} total
+                </>
+              ) : (
+                <>
+                  Showing {displayedCertificates.length} of {certificates.length} certificates
+                </>
+              )}
+            </span>
+          </div>
+
           {/* Certificates Grid */}
           <motion.div 
             variants={containerVariants}
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {certificates.map((cert, index) => (
+            {displayedCertificates.map((cert, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
-                whileHover={{ y: -10, scale: 1.02 }}
+                whileHover={{ 
+                  y: -6,
+                  transition: { duration: 0.3, ease: "easeOut" }
+                }}
                 className="group relative"
               >
                 <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200/50 dark:border-gray-700/50 h-full">
@@ -208,6 +234,45 @@ const Certificates = () => {
               </motion.div>
             ))}
           </motion.div>
+
+          {/* View All Button */}
+          {hasMoreCertificates && !showAllCertificates && (
+            <motion.div 
+              variants={itemVariants}
+              className="text-center mt-12"
+            >
+              <motion.button
+                onClick={() => setShowAllCertificates(true)}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-6 py-3 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 border border-gray-200 dark:border-gray-700"
+              >
+                <div className="flex items-center gap-2">
+                  <span>View All Certificates</span>
+                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                    ({certificates.length - 3} more)
+                  </span>
+                </div>
+              </motion.button>
+            </motion.div>
+          )}
+
+          {/* Show Less Button */}
+          {hasMoreCertificates && showAllCertificates && (
+            <motion.div 
+              variants={itemVariants}
+              className="text-center mt-12"
+            >
+              <motion.button
+                onClick={() => setShowAllCertificates(false)}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-200"
+              >
+                Show Less
+              </motion.button>
+            </motion.div>
+          )}
 
           {/* Bottom CTA */}
           <motion.div 

@@ -161,18 +161,29 @@ const Skills = () => {
             {Object.entries(skillCategories).map(([key, category]) => {
               const IconComponent = category.icon;
               return (
-                <button
+                <motion.button
                   key={key}
                   onClick={() => setActiveCategory(key)}
+                  whileHover={{ 
+                    scale: 1.02,
+                    y: -1,
+                    transition: { duration: 0.2, ease: "easeOut" }
+                  }}
+                  whileTap={{ scale: 0.98 }}
                   className={`flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                     activeCategory === key
-                      ? `bg-gradient-to-r ${category.color} text-white shadow-lg`
-                      : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:shadow-md'
+                      ? `bg-gradient-to-r ${category.color} text-white shadow-lg hover:shadow-xl`
+                      : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-700'
                   }`}
                 >
-                  <IconComponent size={20} />
+                  <motion.div
+                    whileHover={{ rotate: 5 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <IconComponent size={20} />
+                  </motion.div>
                   {category.title}
-                </button>
+                </motion.button>
               );
             })}
           </motion.div>
@@ -207,26 +218,41 @@ const Skills = () => {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ delay: index * 0.1, duration: 0.5 }}
-                    className="relative group"
+                    whileHover={{ 
+                      scale: 1.02,
+                      y: -2,
+                      transition: { duration: 0.2, ease: "easeOut" }
+                    }}
+                    whileTap={{ scale: 0.99 }}
+                    className="relative group cursor-pointer"
                   >
-                    <div className={`w-full h-20 rounded-xl bg-gradient-to-r ${skillCategories[activeCategory].color} opacity-20 group-hover:opacity-30 transition-opacity`}></div>
+                    <motion.div 
+                      className={`w-full h-20 rounded-xl bg-gradient-to-r ${skillCategories[activeCategory].color} opacity-20 transition-all duration-300`}
+                      whileHover={{ opacity: 0.4 }}
+                    ></motion.div>
                     <div className="absolute inset-0 flex flex-col justify-center items-center">
-                      <span className="text-sm font-medium text-gray-900 dark:text-white">
+                      <motion.span 
+                        className="text-sm font-medium text-gray-900 dark:text-white"
+                        whileHover={{ scale: 1.1 }}
+                      >
                         {skill.name}
-                      </span>
-                      <div className="flex items-center gap-1 mt-1">
+                      </motion.span>
+                      <motion.div 
+                        className="flex items-center gap-1 mt-1"
+                        whileHover={{ scale: 1.1 }}
+                      >
                         {[...Array(5)].map((_, i) => (
                           <Star
                             key={i}
                             size={12}
-                            className={`${
+                            className={`transition-colors duration-200 ${
                               i < Math.floor(skill.level / 20)
-                                ? 'text-yellow-400 fill-current'
-                                : 'text-gray-300 dark:text-gray-600'
+                                ? 'text-yellow-400 fill-current group-hover:text-yellow-300'
+                                : 'text-gray-300 dark:text-gray-600 group-hover:text-gray-400'
                             }`}
                           />
                         ))}
-                      </div>
+                      </motion.div>
                     </div>
                   </motion.div>
                 ))}
@@ -246,17 +272,36 @@ const Skills = () => {
                   <motion.div
                     key={tool.name}
                     variants={itemVariants}
-                    transition={{ delay: index * 0.1 }}
-                    className="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-2"
+                    transition={{ delay: index * 0.05 }}
+                    whileHover={{ 
+                      scale: 1.15,
+                      y: -12,
+                      transition: { duration: 0.15, ease: "easeOut" }
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    className="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-2xl transition-all duration-200 cursor-pointer border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600"
                   >
                     <div className="text-center">
-                      <div className="w-12 h-12 mx-auto mb-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <motion.div 
+                        className="w-12 h-12 mx-auto mb-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center transition-all duration-200"
+                        whileHover={{ 
+                          scale: 1.3,
+                          rotate: 8,
+                          transition: { duration: 0.12 }
+                        }}
+                      >
                         <IconComponent className="w-6 h-6 text-white" />
-                      </div>
-                      <h4 className="font-medium text-gray-900 dark:text-white text-sm">
+                      </motion.div>
+                      <motion.h4 
+                        className="font-medium text-gray-900 dark:text-white text-sm"
+                        whileHover={{ 
+                          scale: 1.08,
+                          transition: { duration: 0.1 }
+                        }}
+                      >
                         {tool.name}
-                      </h4>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                      </motion.h4>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">
                         {tool.category}
                       </p>
                     </div>

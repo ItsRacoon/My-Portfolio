@@ -1,13 +1,8 @@
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Float, Text3D, Environment } from '@react-three/drei';
-import { EffectComposer, Bloom, ChromaticAberration } from '@react-three/postprocessing';
 import { Link } from 'react-scroll';
 import { ChevronDown, Download, Mail } from 'lucide-react';
-import FloatingLaptop from './3D/FloatingLaptop';
-import AnimatedLaptop from './AnimatedLaptop';
-import ErrorBoundary from './ErrorBoundary';
+import Monitor3D from './Monitor3D';
 
 const TypewriterText = ({ text, delay = 0 }) => {
   const [displayText, setDisplayText] = useState('');
@@ -34,15 +29,10 @@ const TypewriterText = ({ text, delay = 0 }) => {
 
 const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [use3D, setUse3D] = useState(() => {
-    // Check for reduced motion preference
-    if (typeof window !== 'undefined') {
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      return !prefersReducedMotion;
-    }
-    return true;
-  });
-  const [canvasError, setCanvasError] = useState(false);
+
+  useEffect(() => {
+    console.log('Hero component mounted');
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -56,25 +46,8 @@ const Hero = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const handleCanvasError = () => {
-    setCanvasError(true);
-    setUse3D(false);
-  };
-
-  // Auto-switch to 2D if 3D is enabled but having issues
-  useEffect(() => {
-    if (use3D && !canvasError) {
-      const timeout = setTimeout(() => {
-        // If 3D is still enabled after 10 seconds but we're seeing context loss,
-        // this effect will be cleaned up by the dependency array changes
-      }, 10000);
-      
-      return () => clearTimeout(timeout);
-    }
-  }, [use3D, canvasError]);
-
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-blue-900 dark:to-indigo-900 pt-20">
+    <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-blue-900 dark:to-indigo-900">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
@@ -102,7 +75,7 @@ const Hero = () => {
         ))}
       </motion.div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6 pt-24 pb-8 relative z-10">
         <div className="grid lg:grid-cols-5 gap-12 items-center">
           {/* Left Content */}
           <motion.div
@@ -234,101 +207,12 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative lg:col-span-3 flex items-center justify-center"
           >
-            <div className="w-[900px] h-[900px] bg-gradient-to-br from-blue-900/20 to-purple-900/20 rounded-2xl flex items-center justify-center relative overflow-hidden">
-              {use3D && !canvasError ? (
-                <ErrorBoundary>
-                  <Suspense fallback={<AnimatedLaptop />}>
-                    <Canvas
-                      camera={{ position: [0, 0, 5], fov: 75 }}
-                      className="rounded-2xl w-full h-full"
-                      gl={{ 
-                        antialias: false, // Reduce GPU load
-                        alpha: true,
-                        powerPreference: "default", // Use less aggressive GPU
-                        preserveDrawingBuffer: false,
-                        failIfMajorPerformanceCaveat: false,
-                        stencil: false, // Disable stencil buffer
-                        depth: true
-                      }}
-                      dpr={[0.5, 1.5]} // Lower pixel ratio for better performance
-                      performance={{ min: 0.3, max: 1 }} // More conservative performance
-                      onCreated={({ gl, scene }) => {
-                        gl.setClearColor(0x000000, 0);
-                        scene.background = null;
-                        
-                        // Handle context loss
-                        const canvas = gl.domElement;
-                        canvas.addEventListener('webglcontextlost', (event) => {
-                          event.preventDefault();
-                          console.warn('WebGL context lost, switching to 2D fallback');
-                          handleCanvasError();
-                        });
-                      }}
-                      onError={handleCanvasError}
-                    >
-                      <ambientLight intensity={0.4} />
-                      <directionalLight position={[10, 10, 5]} intensity={1.2} castShadow />
-                      <pointLight position={[-10, -10, -5]} intensity={0.5} color="#4299e1" />
-                      <spotLight 
-                        position={[0, 10, 0]} 
-                        angle={0.3} 
-                        penumbra={1} 
-                        intensity={0.8} 
-                        color="#ffffff"
-                        castShadow
-                      />
-                      <Float
-                        speed={1.5}
-                        rotationIntensity={0.5}
-                        floatIntensity={1}
-                      >
-                        <FloatingLaptop />
-                      </Float>
-                      <OrbitControls
-                        enableZoom={false}
-                        enablePan={false}
-                        autoRotate
-                        autoRotateSpeed={1}
-                        enableDamping
-                        dampingFactor={0.05}
-                      />
-                      <EffectComposer>
-                        <Bloom 
-                          intensity={0.5}
-                          luminanceThreshold={0.9}
-                          luminanceSmoothing={0.9}
-                        />
-                        <ChromaticAberration 
-                          offset={[0.001, 0.001]}
-                        />
-                      </EffectComposer>
-                    </Canvas>
-                  </Suspense>
-                </ErrorBoundary>
-              ) : (
-                <div className="relative w-full h-full">
-                  <AnimatedLaptop />
-                  {canvasError && (
-                    <div className="absolute top-4 left-4 bg-blue-500/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs">
-                      2D Mode (Better Performance)
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {/* Toggle Button */}
-              <button
-                onClick={() => setUse3D(!use3D)}
-                className="absolute top-4 right-4 bg-white/10 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm hover:bg-white/20 transition-colors z-10"
-              >
-                {use3D ? '2D' : '3D'}
-              </button>
-
-              {/* Animated Floating Elements */}
-              <div className="absolute top-10 right-10 w-20 h-20 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full opacity-20 animate-pulse"></div>
-              <div className="absolute bottom-20 left-10 w-16 h-16 bg-gradient-to-r from-pink-400 to-red-500 rounded-full opacity-20 animate-bounce"></div>
-              <div className="absolute top-1/2 left-10 w-12 h-12 bg-gradient-to-r from-green-400 to-blue-500 rounded-full opacity-15 animate-float"></div>
-              <div className="absolute bottom-1/3 right-20 w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full opacity-25 animate-pulse animation-delay-1000"></div>
+            <div className="w-full relative overflow-visible flex items-center justify-center" style={{ background: 'transparent', border: 'none' }}>
+              <Monitor3D />
+              
+              {/* Optional: Add some decorative elements */}
+              <div className="absolute top-4 right-4 w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              <div className="absolute bottom-4 left-4 w-1 h-1 bg-blue-400 rounded-full animate-ping"></div>
             </div>
           </motion.div>
         </div>
