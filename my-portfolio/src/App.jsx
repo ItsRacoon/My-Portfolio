@@ -1,16 +1,19 @@
-import React from 'react'
+import React, { Suspense, lazy } from 'react'
 import './App.css'
 import { ThemeProvider } from './contexts/ThemeContext'
 import Header from './components/Header'
 import Hero from './components/Hero'
-import About from './components/About'
-import Education from './components/Education'
-import Skills from './components/Skills'
-import Projects from './components/Projects'
-import Experience from './components/Experience'
-import Certificates from './components/Certificates'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
+import LoadingSpinner from './components/LoadingSpinner'
+
+// Lazy load non-critical components
+const About = lazy(() => import('./components/About'))
+const Education = lazy(() => import('./components/Education'))
+const Skills = lazy(() => import('./components/Skills'))
+const Projects = lazy(() => import('./components/Projects'))
+const Experience = lazy(() => import('./components/Experience'))
+const Certificates = lazy(() => import('./components/Certificates'))
+const Contact = lazy(() => import('./components/Contact'))
+const Footer = lazy(() => import('./components/Footer'))
 
 function App() {
   return (
@@ -19,15 +22,19 @@ function App() {
         <Header />
         <main>
           <Hero />
-          <About />
-          <Education />
-          <Skills />
-          <Projects />
-          <Experience />
-          <Certificates />
-          <Contact />
+          <Suspense fallback={<LoadingSpinner />}>
+            <About />
+            <Education />
+            <Skills />
+            <Projects />
+            <Experience />
+            <Certificates />
+            <Contact />
+          </Suspense>
         </main>
-        <Footer />
+        <Suspense fallback={<LoadingSpinner />}>
+          <Footer />
+        </Suspense>
       </div>
     </ThemeProvider>
   )

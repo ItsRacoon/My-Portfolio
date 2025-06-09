@@ -1,0 +1,300 @@
+Hero component mounted
+Hero.jsx:34 Hero component mounted
+Monitor3D.jsx:74 Mesh Details: {name: 'Circle', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Circle
+Monitor3D.jsx:74 Mesh Details: {name: 'Cube', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Cube
+Monitor3D.jsx:74 Mesh Details: {name: 'Cube003_1', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:96 Applying wallpaper to potential screen: Cube003_1 Size: _Vector3 {x: 11.779891820445565, y: 5.828905024071853, z: 0.6166521596861025} Position: _Vector3 {x: -0.0872632251093463, y: 5.674277812242508, z: 1.1356883802471018}
+Monitor3D.jsx:123 Applied wallpaper texture to: Cube003_1
+Monitor3D.jsx:74 Mesh Details: {name: 'Cube003_2', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:96 Applying wallpaper to potential screen: Cube003_2 Size: _Vector3 {x: 11.856346919956664, y: 6.41561847720876, z: 1.118312154393813} Position: _Vector3 {x: -0.0872632251093463, y: 5.674277812242508, z: 1.1356883802471018}
+Monitor3D.jsx:123 Applied wallpaper texture to: Cube003_2
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshPhysicalMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Curve
+Monitor3D.jsx:74 Mesh Details: {name: 'Cylinder', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:96 Applying wallpaper to potential screen: Cylinder Size: _Vector3 {x: 1.2143349932767507, y: 5.250694680545479, z: 1.6597035040330894} Position: _Vector3 {x: -0.011432045744046162, y: 1.9900018274784088, z: 0.013406732989610344}
+Monitor3D.jsx:123 Applied wallpaper texture to: Cylinder
+Monitor3D.jsx:74 Mesh Details: {name: 'Cylinder001', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:96 Applying wallpaper to potential screen: Cylinder001 Size: _Vector3 {x: 1.109290827039866, y: 1.111536396925004, z: 1.109290793913504} Position: _Vector3 {x: -0.011432045744046162, y: 1.1617008745670319, z: 0.013406732989610344}
+Monitor3D.jsx:123 Applied wallpaper texture to: Cylinder001
+Monitor3D.jsx:74 Mesh Details: {name: 'Cube001', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:96 Applying wallpaper to potential screen: Cube001 Size: _Vector3 {x: 0.7062435150146484, y: 0.86558885102761, z: 0.7062435150146484} Position: _Vector3 {x: 0.33869248628616333, y: 2.106931209564209, z: 0}
+Monitor3D.jsx:123 Applied wallpaper texture to: Cube001
+Monitor3D.jsx:74 Mesh Details: {name: 'Plane001_1', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:74 Mesh Details: {name: 'Plane001_2', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve001', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:96 Applying wallpaper to potential screen: Curve001 Size: _Vector3 {x: 3.995707526919688, y: 0.3117569038089645, z: 2.3440646563644947} Position: _Vector3 {x: 0.02409910038113594, y: 0.5399974584579468, z: -0.3578551411628723}
+Monitor3D.jsx:123 Applied wallpaper texture to: Curve001
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve002', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Curve002
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve003', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Curve003
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve004', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Curve004
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve005', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Curve005
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve006', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Curve006
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve007', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Curve007
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve008', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Curve008
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve009', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Curve009
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve010', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Curve010
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve011', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Curve011
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve012', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Curve012
+Monitor3D.jsx:74 Mesh Details: {name: 'Cube003', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:96 Applying wallpaper to potential screen: Cube003 Size: _Vector3 {x: 8.188529162279725, y: 9.12395203953726, z: 8.591186198995274} Position: _Vector3 {x: 9.171606063842773, y: 19.01870346069336, z: -12.781768798828125}
+Monitor3D.jsx:123 Applied wallpaper texture to: Cube003
+Monitor3D.jsx:74 Mesh Details: {name: 'Cube004', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:96 Applying wallpaper to potential screen: Cube004 Size: _Vector3 {x: 7.695556527470156, y: 10.134392226778644, z: 7.774383310974617} Position: _Vector3 {x: 9.522160530090332, y: 19.01870346069336, z: -9.783380508422852}
+Monitor3D.jsx:123 Applied wallpaper texture to: Cube004
+Monitor3D.jsx:74 Mesh Details: {name: 'Plane001', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:74 Mesh Details: {name: 'Circle001', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:74 Mesh Details: {name: 'Cube005', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:74 Mesh Details: {name: 'Cube007', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:96 Applying wallpaper to potential screen: Cube007 Size: _Vector3 {x: 0.6166504941010766, y: 5.828905024071853, z: 11.779890154860539} Position: _Vector3 {x: -0.7615647315979004, y: 5.657882213592529, z: 0.6546781659126282}
+Monitor3D.jsx:123 Applied wallpaper texture to: Cube007
+Monitor3D.jsx:74 Mesh Details: {name: 'Cube007_1', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:96 Applying wallpaper to potential screen: Cube007_1 Size: _Vector3 {x: 1.1183104111339253, y: 6.41561847720876, z: 11.856345176696777} Position: _Vector3 {x: -0.7615647315979004, y: 5.657882213592529, z: 0.6546781659126282}
+Monitor3D.jsx:123 Applied wallpaper texture to: Cube007_1
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve013', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshPhysicalMaterial', …}
+Monitor3D.jsx:74 Mesh Details: {name: 'Cylinder002', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:96 Applying wallpaper to potential screen: Cylinder002 Size: _Vector3 {x: 1.6597031178806674, y: 5.250694680545479, z: 1.2143346071243286} Position: _Vector3 {x: -1.8838461637496948, y: 1.9736062288284302, z: 0.5788471102714539}
+Monitor3D.jsx:123 Applied wallpaper texture to: Cylinder002
+Monitor3D.jsx:74 Mesh Details: {name: 'Cylinder003', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:96 Applying wallpaper to potential screen: Cylinder003 Size: _Vector3 {x: 1.1092904958274943, y: 1.111536396925004, z: 1.1092905289538564} Position: _Vector3 {x: -1.8838461637496948, y: 1.1453052759170532, z: 0.5788471102714539}
+Monitor3D.jsx:123 Applied wallpaper texture to: Cylinder003
+Monitor3D.jsx:74 Mesh Details: {name: 'Circle', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Circle
+Monitor3D.jsx:74 Mesh Details: {name: 'Cube', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Cube
+Monitor3D.jsx:74 Mesh Details: {name: 'Cube003_1', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:96 Applying wallpaper to potential screen: Cube003_1 Size: _Vector3 {x: 11.779891820445565, y: 5.828905024071853, z: 0.6166521596861025} Position: _Vector3 {x: -0.0872632251093463, y: 5.674277812242508, z: 1.1356883802471018}
+Monitor3D.jsx:123 Applied wallpaper texture to: Cube003_1
+Monitor3D.jsx:74 Mesh Details: {name: 'Cube003_2', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:96 Applying wallpaper to potential screen: Cube003_2 Size: _Vector3 {x: 11.856346919956664, y: 6.41561847720876, z: 1.118312154393813} Position: _Vector3 {x: -0.0872632251093463, y: 5.674277812242508, z: 1.1356883802471018}
+Monitor3D.jsx:123 Applied wallpaper texture to: Cube003_2
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshPhysicalMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Curve
+Monitor3D.jsx:74 Mesh Details: {name: 'Cylinder', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:96 Applying wallpaper to potential screen: Cylinder Size: _Vector3 {x: 1.2143349932767507, y: 5.250694680545479, z: 1.6597035040330894} Position: _Vector3 {x: -0.011432045744046162, y: 1.9900018274784088, z: 0.013406732989610344}
+Monitor3D.jsx:123 Applied wallpaper texture to: Cylinder
+Monitor3D.jsx:74 Mesh Details: {name: 'Cylinder001', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:96 Applying wallpaper to potential screen: Cylinder001 Size: _Vector3 {x: 1.109290827039866, y: 1.111536396925004, z: 1.109290793913504} Position: _Vector3 {x: -0.011432045744046162, y: 1.1617008745670319, z: 0.013406732989610344}
+Monitor3D.jsx:123 Applied wallpaper texture to: Cylinder001
+Monitor3D.jsx:74 Mesh Details: {name: 'Cube001', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:96 Applying wallpaper to potential screen: Cube001 Size: _Vector3 {x: 0.7062435150146484, y: 0.86558885102761, z: 0.7062435150146484} Position: _Vector3 {x: 0.33869248628616333, y: 2.106931209564209, z: 0}
+Monitor3D.jsx:123 Applied wallpaper texture to: Cube001
+Monitor3D.jsx:74 Mesh Details: {name: 'Plane001_1', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:74 Mesh Details: {name: 'Plane001_2', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve001', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:96 Applying wallpaper to potential screen: Curve001 Size: _Vector3 {x: 3.995707526919688, y: 0.3117569038089645, z: 2.3440646563644947} Position: _Vector3 {x: 0.02409910038113594, y: 0.5399974584579468, z: -0.3578551411628723}
+Monitor3D.jsx:123 Applied wallpaper texture to: Curve001
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve002', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Curve002
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve003', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Curve003
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve004', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Curve004
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve005', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Curve005
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve006', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Curve006
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve007', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Curve007
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve008', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Curve008
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve009', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Curve009
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve010', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Curve010
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve011', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Curve011
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve012', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:143 Processing mesh: Curve012
+Monitor3D.jsx:74 Mesh Details: {name: 'Cube003', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:96 Applying wallpaper to potential screen: Cube003 Size: _Vector3 {x: 8.188529162279725, y: 9.12395203953726, z: 8.591186198995274} Position: _Vector3 {x: 9.171606063842773, y: 19.01870346069336, z: -12.781768798828125}
+Monitor3D.jsx:123 Applied wallpaper texture to: Cube003
+Monitor3D.jsx:74 Mesh Details: {name: 'Cube004', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:96 Applying wallpaper to potential screen: Cube004 Size: _Vector3 {x: 7.695556527470156, y: 10.134392226778644, z: 7.774383310974617} Position: _Vector3 {x: 9.522160530090332, y: 19.01870346069336, z: -9.783380508422852}
+Monitor3D.jsx:123 Applied wallpaper texture to: Cube004
+Monitor3D.jsx:74 Mesh Details: {name: 'Plane001', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:74 Mesh Details: {name: 'Circle001', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:74 Mesh Details: {name: 'Cube005', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:74 Mesh Details: {name: 'Cube007', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:96 Applying wallpaper to potential screen: Cube007 Size: _Vector3 {x: 0.6166504941010766, y: 5.828905024071853, z: 11.779890154860539} Position: _Vector3 {x: -0.7615647315979004, y: 5.657882213592529, z: 0.6546781659126282}
+Monitor3D.jsx:123 Applied wallpaper texture to: Cube007
+Monitor3D.jsx:74 Mesh Details: {name: 'Cube007_1', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:96 Applying wallpaper to potential screen: Cube007_1 Size: _Vector3 {x: 1.1183104111339253, y: 6.41561847720876, z: 11.856345176696777} Position: _Vector3 {x: -0.7615647315979004, y: 5.657882213592529, z: 0.6546781659126282}
+Monitor3D.jsx:123 Applied wallpaper texture to: Cube007_1
+Monitor3D.jsx:74 Mesh Details: {name: 'Curve013', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshPhysicalMaterial', …}
+Monitor3D.jsx:74 Mesh Details: {name: 'Cylinder002', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:96 Applying wallpaper to potential screen: Cylinder002 Size: _Vector3 {x: 1.6597031178806674, y: 5.250694680545479, z: 1.2143346071243286} Position: _Vector3 {x: -1.8838461637496948, y: 1.9736062288284302, z: 0.5788471102714539}
+Monitor3D.jsx:123 Applied wallpaper texture to: Cylinder002
+Monitor3D.jsx:74 Mesh Details: {name: 'Cylinder003', localPosition: _Vector3, worldPosition: _Vector3, size: _Vector3, material: 'MeshStandardMaterial', …}
+Monitor3D.jsx:96 Applying wallpaper to potential screen: Cylinder003 Size: _Vector3 {x: 1.1092904958274943, y: 1.111536396925004, z: 1.1092905289538564} Position: _Vector3 {x: -1.8838461637496948, y: 1.1453052759170532, z: 0.5788471102714539}
+Monitor3D.jsx:123 Applied wallpaper texture to: Cylinder003
+Monitor3D.jsx:19 Wallpaper texture loaded: _Texture {isTexture: true, uuid: 'b3fb2872-fc1d-4e58-ba4d-c3d7368d8a14', name: '', source: Source, mipmaps: Array(0), …}
+Monitor3D.jsx:19 Wallpaper texture loaded: _Texture {isTexture: true, uuid: 'b3fb2872-fc1d-4e58-ba4d-c3d7368d8a14', name: '', source: Source, mipmaps: Array(0), …}
+chunk-PZ6HF7LT.js?v=b96d02bc:37887 WebGL: INVALID_ENUM: texParameter: invalid parameter
+setTextureParameters @ chunk-PZ6HF7LT.js?v=b96d02bc:37887
+uploadTexture @ chunk-PZ6HF7LT.js?v=b96d02bc:38016
+setTexture2D @ chunk-PZ6HF7LT.js?v=b96d02bc:37830
+setValueT1 @ chunk-PZ6HF7LT.js?v=b96d02bc:34427
+upload @ chunk-PZ6HF7LT.js?v=b96d02bc:34807
+setProgram @ chunk-PZ6HF7LT.js?v=b96d02bc:41044
+WebGLRenderer.renderBufferDirect @ chunk-PZ6HF7LT.js?v=b96d02bc:40334
+renderObject @ chunk-PZ6HF7LT.js?v=b96d02bc:40777
+renderObjects @ chunk-PZ6HF7LT.js?v=b96d02bc:40759
+renderScene @ chunk-PZ6HF7LT.js?v=b96d02bc:40675
+WebGLRenderer.render @ chunk-PZ6HF7LT.js?v=b96d02bc:40586
+update @ chunk-OB2BZLEO.js?v=b96d02bc:14397
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14416
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407Understand this warning
+chunk-PZ6HF7LT.js?v=b96d02bc:37888 WebGL: INVALID_ENUM: texParameter: invalid parameter
+setTextureParameters @ chunk-PZ6HF7LT.js?v=b96d02bc:37888
+uploadTexture @ chunk-PZ6HF7LT.js?v=b96d02bc:38016
+setTexture2D @ chunk-PZ6HF7LT.js?v=b96d02bc:37830
+setValueT1 @ chunk-PZ6HF7LT.js?v=b96d02bc:34427
+upload @ chunk-PZ6HF7LT.js?v=b96d02bc:34807
+setProgram @ chunk-PZ6HF7LT.js?v=b96d02bc:41044
+WebGLRenderer.renderBufferDirect @ chunk-PZ6HF7LT.js?v=b96d02bc:40334
+renderObject @ chunk-PZ6HF7LT.js?v=b96d02bc:40777
+renderObjects @ chunk-PZ6HF7LT.js?v=b96d02bc:40759
+renderScene @ chunk-PZ6HF7LT.js?v=b96d02bc:40675
+WebGLRenderer.render @ chunk-PZ6HF7LT.js?v=b96d02bc:40586
+update @ chunk-OB2BZLEO.js?v=b96d02bc:14397
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14416
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407
+requestAnimationFrame
+loop @ chunk-OB2BZLEO.js?v=b96d02bc:14407Understand this warning

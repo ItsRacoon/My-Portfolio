@@ -1,4 +1,5 @@
 // Performance monitoring utilities for 3D components
+import { useEffect, useState } from 'react';
 
 export class PerformanceMonitor {
   constructor() {
@@ -41,6 +42,98 @@ export class PerformanceMonitor {
     return this.fps;
   }
 }
+
+// Debounce function for scroll events
+export const debounce = (func, wait) => {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+};
+
+// Throttle function for frequent events
+export const throttle = (func, limit) => {
+  let inThrottle;
+  return function() {
+    const args = arguments;
+    const context = this;
+    if (!inThrottle) {
+      func.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
+    }
+  };
+};
+
+// Intersection Observer hook for lazy loading
+export const useIntersectionObserver = (ref, options = {}) => {
+  const [isIntersecting, setIsIntersecting] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsIntersecting(entry.isIntersecting);
+    }, options);
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [ref, options]);
+
+  return isIntersecting;
+};
+
+// Check if device is mobile
+export const isMobile = () => {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+};
+
+// Check if device supports WebGL (cached result to avoid creating multiple contexts)
+let webglSupported = null;
+export const supportsWebGL = () => {
+  if (webglSupported !== null) {
+    return webglSupported;
+  }
+  
+  try {
+    const canvas = document.createElement('canvas');
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    webglSupported = !!gl;
+    
+    // Properly dispose of the test context
+    if (gl) {
+      const loseContext = gl.getExtension('WEBGL_lose_context');
+      if (loseContext) {
+        loseContext.loseContext();
+      }
+    }
+    
+    return webglSupported;
+  } catch (e) {
+    console.warn('WARNING: Too many active WebGL contexts. Oldest context will be lost.');
+    webglSupported = false;
+    return false;
+  }
+};
+
+// Check WebP support
+export const supportsWebP = () => {
+  const canvas = document.createElement('canvas');
+  canvas.width = 1;
+  canvas.height = 1;
+  return canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+};
+
+// Reduce motion for accessibility
+export const prefersReducedMotion = () => {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+};
 
 // Memory usage monitoring
 export const getMemoryUsage = () => {

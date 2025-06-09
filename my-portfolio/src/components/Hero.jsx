@@ -208,7 +208,7 @@ const Hero = () => {
             className="relative lg:col-span-3 flex items-center justify-center"
           >
             <div className="w-full relative overflow-visible flex items-center justify-center" style={{ background: 'transparent', border: 'none' }}>
-              <Monitor3D />
+              <Monitor3D key="hero-monitor" />
               
               {/* Optional: Add some decorative elements */}
               <div className="absolute top-4 right-4 w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
