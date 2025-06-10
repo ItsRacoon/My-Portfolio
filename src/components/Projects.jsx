@@ -624,7 +624,7 @@ const Projects = () => {
                 
                 <button 
                   onClick={() => setSelectedProject(null)}
-                  className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-gray-900 p-1.5 rounded-full hover:bg-white hover:scale-110 transition-all duration-200 z-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-gray-900 p-1.5 rounded-full hover:bg-white hover:scale-110 transition-all duration-200 z-10 focus:outline-none focus:ring-2 focus:ring-blue-600"
                   aria-label="Close modal"
                 >
                   <X size={16} />
