@@ -14,9 +14,4 @@ services:
       - key: NODE_ENV
         value: production
     healthCheckPath: /
-    autoDeploy: true
-    # Free tier specific settings
-    disk:
-      name: portfolio-disk
-      mountPath: /opt/render/project/dist
-      sizeGB: 1 
+    autoDeploy: true 
