@@ -224,19 +224,19 @@ const Projects = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
+        staggerChildren: 0.05, // Reduced stagger for smoother animation
+        delayChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 20 }, // Reduced y movement for smoother effect
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.4, // Faster animation
         ease: "easeOut",
       },
     },
@@ -245,10 +245,9 @@ const Projects = () => {
   const ProjectCard = ({ project, index }) => (
     <motion.div
       variants={itemVariants}
-      layout
       whileHover={{ 
-        y: -4,
-        transition: { duration: 0.3, ease: "easeOut" }
+        y: -2, // Reduced hover movement
+        transition: { duration: 0.2, ease: "easeOut" }
       }}
       className="group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600"
     >
@@ -506,14 +505,15 @@ const Projects = () => {
           {filteredProjects.length > 0 ? (
             <>
               <motion.div 
-                layout
+                key={showAllProjects ? 'all-projects' : 'limited-projects'}
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
                 className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
               >
-                <AnimatePresence>
-                  {displayedProjects.map((project, index) => (
-                    <ProjectCard key={project.id} project={project} index={index} />
-                  ))}
-                </AnimatePresence>
+                {displayedProjects.map((project, index) => (
+                  <ProjectCard key={project.id} project={project} index={index} />
+                ))}
               </motion.div>
 
               {/* View All Button */}
@@ -524,8 +524,8 @@ const Projects = () => {
                 >
                   <motion.button
                     onClick={() => setShowAllProjects(true)}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
                     className="px-6 py-3 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 border border-gray-200 dark:border-gray-700"
                   >
                     <div className="flex items-center gap-2">
@@ -546,9 +546,9 @@ const Projects = () => {
                 >
                   <motion.button
                     onClick={() => setShowAllProjects(false)}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300"
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
+                    className="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-200"
                   >
                     Show Less
                   </motion.button>
