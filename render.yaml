@@ -1,11 +1,22 @@
 services:
   - type: web
-    name: portfolio
+    name: portfolio-site
     env: node
-    buildCommand: npm install && npm run build
+    region: oregon # Free tier region
+    plan: free # Explicitly specify free tier
+    buildCommand: npm ci && npm run build
     startCommand: npm run preview
     envVars:
       - key: NODE_VERSION
         value: 18.17.0
+      - key: PORT
+        value: 10000
+      - key: NODE_ENV
+        value: production
     healthCheckPath: /
-    autoDeploy: true 
+    autoDeploy: true
+    # Free tier specific settings
+    disk:
+      name: portfolio-disk
+      mountPath: /opt/render/project/dist
+      sizeGB: 1 
