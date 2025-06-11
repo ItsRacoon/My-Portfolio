@@ -35,6 +35,11 @@ module.exports = {
           },
         },
       },
+      colors: {
+        blue: {
+          600: '#2563eb',
+        }
+      }
     },
   },
   plugins: [],
