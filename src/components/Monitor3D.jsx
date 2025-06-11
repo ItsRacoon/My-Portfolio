@@ -1,7 +1,14 @@
 import React, { useRef, useEffect, useState, Suspense, useMemo } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useGLTF, Environment, ContactShadows, PresentationControls, useTexture } from '@react-three/drei';
-import * as THREE from 'three';
+import { 
+  CanvasTexture, 
+  LinearFilter, 
+  ClampToEdgeWrapping, 
+  MeshStandardMaterial, 
+  Vector3, 
+  Box3 
+} from 'three';
 
 import { PerformanceMonitor, throttle, getMemoryUsage, supportsWebGL } from '../utils/performance';
 
@@ -57,13 +64,13 @@ const MonitorModel = ({ scrollY }) => {
       ctx.textAlign = 'center';
       ctx.fillText('Portfolio', 256, 256);
       
-      const fallbackTexture = new THREE.CanvasTexture(canvas);
+      const fallbackTexture = new CanvasTexture(canvas);
       // Use safer texture settings
       fallbackTexture.generateMipmaps = false;
-      fallbackTexture.minFilter = THREE.LinearFilter;
-      fallbackTexture.magFilter = THREE.LinearFilter;
-      fallbackTexture.wrapS = THREE.ClampToEdgeWrapping;
-      fallbackTexture.wrapT = THREE.ClampToEdgeWrapping;
+      fallbackTexture.minFilter = LinearFilter;
+      fallbackTexture.magFilter = LinearFilter;
+      fallbackTexture.wrapS = ClampToEdgeWrapping;
+      fallbackTexture.wrapT = ClampToEdgeWrapping;
       fallbackTexture.flipY = false;
       fallbackTexture.needsUpdate = true;
       return fallbackTexture;
@@ -73,10 +80,10 @@ const MonitorModel = ({ scrollY }) => {
     try {
       // Don't force RGB format - let Three.js determine the best format
       wallpaperTexture.generateMipmaps = false; // Disable mipmaps to avoid format issues
-      wallpaperTexture.minFilter = THREE.LinearFilter;
-      wallpaperTexture.magFilter = THREE.LinearFilter;
-      wallpaperTexture.wrapS = THREE.ClampToEdgeWrapping;
-      wallpaperTexture.wrapT = THREE.ClampToEdgeWrapping;
+      wallpaperTexture.minFilter = LinearFilter;
+      wallpaperTexture.magFilter = LinearFilter;
+      wallpaperTexture.wrapS = ClampToEdgeWrapping;
+      wallpaperTexture.wrapT = ClampToEdgeWrapping;
       wallpaperTexture.flipY = false;
       wallpaperTexture.needsUpdate = true;
       
@@ -91,7 +98,7 @@ const MonitorModel = ({ scrollY }) => {
   // Memoize material creation to avoid recreating on every render
   const materials = useMemo(() => {
     // Create screen material with safer texture handling
-    const screenMaterial = new THREE.MeshStandardMaterial({
+    const screenMaterial = new MeshStandardMaterial({
       color: 0xffffff,
       metalness: 0.0,
       roughness: 0.1,
@@ -110,7 +117,7 @@ const MonitorModel = ({ scrollY }) => {
       }
     }
 
-    const frameMaterial = new THREE.MeshStandardMaterial({
+    const frameMaterial = new MeshStandardMaterial({
       color: 0x1a1a1a,
       emissive: 0x4c1d95,
       emissiveIntensity: 0.05, // Reduced for performance
@@ -118,13 +125,13 @@ const MonitorModel = ({ scrollY }) => {
       roughness: 0.2
     });
 
-    const baseMaterial = new THREE.MeshStandardMaterial({
+    const baseMaterial = new MeshStandardMaterial({
       color: 0x1e40af,
       metalness: 0.6,
       roughness: 0.3
     });
 
-    const metalMaterial = new THREE.MeshStandardMaterial({
+    const metalMaterial = new MeshStandardMaterial({
       color: 0xc0c0c0,
       emissive: 0xffd700,
       emissiveIntensity: 0.02, // Reduced for performance
@@ -132,7 +139,7 @@ const MonitorModel = ({ scrollY }) => {
       roughness: 0.1
     });
 
-    const accentMaterial = new THREE.MeshStandardMaterial({
+    const accentMaterial = new MeshStandardMaterial({
       color: 0x2d1b69,
       emissive: 0xff0040,
       emissiveIntensity: 0.03, // Reduced for performance
@@ -140,7 +147,7 @@ const MonitorModel = ({ scrollY }) => {
       roughness: 0.3
     });
 
-    const defaultMaterial = new THREE.MeshStandardMaterial({
+    const defaultMaterial = new MeshStandardMaterial({
       color: 0x3a3a3a,
       metalness: 0.6,
       roughness: 0.4
@@ -194,10 +201,10 @@ const MonitorModel = ({ scrollY }) => {
     clonedScene.traverse((child) => {
       if (child.isMesh) {
         // Get position and size information once
-        const worldPosition = new THREE.Vector3();
+        const worldPosition = new Vector3();
         child.getWorldPosition(worldPosition);
-        const bbox = new THREE.Box3().setFromObject(child);
-        const size = bbox.getSize(new THREE.Vector3());
+        const bbox = new Box3().setFromObject(child);
+        const size = bbox.getSize(new Vector3());
         const maxDimension = Math.max(size.x, size.y, size.z);
         
         // Check if this is the main monitor screen

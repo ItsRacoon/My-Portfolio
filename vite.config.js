@@ -13,26 +13,66 @@ export default defineConfig({
     // Enable code splitting and chunk optimization
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          three: ['three', '@react-three/fiber', '@react-three/drei'],
-          animations: ['framer-motion'],
-          utils: ['lucide-react', 'react-scroll', '@emailjs/browser']
+        manualChunks: (id) => {
+          // Create separate chunks for large libraries
+          if (id.includes('node_modules')) {
+            if (id.includes('three')) {
+              return 'three'
+            }
+            if (id.includes('@react-three')) {
+              return 'react-three'
+            }
+            if (id.includes('framer-motion')) {
+              return 'framer-motion'
+            }
+            if (id.includes('lucide-react')) {
+              return 'lucide'
+            }
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'react-vendor'
+            }
+            // Group other vendor libraries
+            return 'vendor'
+          }
         }
       }
     },
-    // Enable compression
+    // Enable compression and optimization
     minify: 'terser',
     terserOptions: {
       compress: {
         drop_console: true,
-        drop_debugger: true
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn']
       }
     },
-    // Optimize chunk size
-    chunkSizeWarningLimit: 1000
+    // Increase chunk size limit to reduce warnings
+    chunkSizeWarningLimit: 1500,
+    // Enable source maps for better debugging (optional)
+    sourcemap: false,
+    // Optimize CSS
+    cssCodeSplit: true,
+    // Enable build cache
+    target: 'esnext',
+    // Optimize asset handling
+    assetsInlineLimit: 4096
   },
   optimizeDeps: {
-    include: ['three', '@react-three/fiber', '@react-three/drei', 'framer-motion']
+    include: [
+      'three', 
+      '@react-three/fiber', 
+      '@react-three/drei', 
+      'framer-motion',
+      'lucide-react',
+      'react-scroll',
+      '@emailjs/browser'
+    ],
+    // Force optimization of these packages
+    force: true
+  },
+  // Enable esbuild for faster builds
+  esbuild: {
+    target: 'esnext',
+    minify: true
   }
 })

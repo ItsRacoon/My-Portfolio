@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState, Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF, Environment, ContactShadows, PresentationControls, useTexture } from '@react-three/drei';
-import * as THREE from 'three';
+import { MeshStandardMaterial } from 'three';
 
 const MonitorModel = ({ scrollY }) => {
   const gltf = useGLTF('/asus.glb');
@@ -31,7 +31,7 @@ const MonitorModel = ({ scrollY }) => {
       gltf.scene.traverse((child) => {
         if (child.isMesh && child.name === 'Cube003_1') {
           // This is the screen - apply wallpaper
-          child.material = new THREE.MeshStandardMaterial({
+          child.material = new MeshStandardMaterial({
             map: wallpaperTexture,
             color: 0xffffff,
           });
