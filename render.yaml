@@ -2,11 +2,14 @@ services:
   - type: web
     name: portfolio-site
     runtime: static
-    buildCommand: npm install && npm run build
+    rootDir: .
+    buildCommand: npm install && set NODE_ENV=production && npm run build
     staticPublishPath: ./dist
     envVars:
       - key: NODE_VERSION
         value: 20
+      - key: NODE_OPTIONS
+        value: "--max_old_space_size=2048"
     headers:
       - path: /*
         name: Cache-Control
