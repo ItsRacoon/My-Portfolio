@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -10,8 +10,18 @@ export default defineConfig({
       fastRefresh: true,
       // Ensure proper handling of useLayoutEffect
       include: '**/*.{jsx,tsx}',
+      // Explicitly set React import
+      jsxImportSource: 'react',
     }),
   ],
+  resolve: {
+    alias: {
+      // Ensure React is properly resolved
+      'react': 'react',
+      'react-dom': 'react-dom',
+      'react-dom/client': 'react-dom/client'
+    },
+  },
   server: {
     host: '0.0.0.0', // This allows access from other devices on the network
     port: 5173,
@@ -21,27 +31,31 @@ export default defineConfig({
     // Enable code splitting and chunk optimization
     rollupOptions: {
       output: {
+        // Ensure proper loading order
+        entryFileNames: 'assets/[name]-[hash].js',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]',
         manualChunks: (id) => {
           // Create separate chunks for large libraries
           if (id.includes('node_modules')) {
             // Ensure React is loaded first
-            if (id.includes('react') || id.includes('react-dom')) {
-              return 'react-vendor'
+            if (id.includes('/react/') || id.includes('/react-dom/')) {
+              return 'react-vendor';
             }
-            if (id.includes('three')) {
-              return 'three'
+            if (id.includes('/three/')) {
+              return 'three';
             }
             if (id.includes('@react-three')) {
-              return 'react-three'
+              return 'react-three';
             }
             if (id.includes('framer-motion')) {
-              return 'framer-motion'
+              return 'framer-motion';
             }
             if (id.includes('lucide-react')) {
-              return 'lucide'
+              return 'lucide';
             }
             // Group other vendor libraries
-            return 'vendor'
+            return 'vendor';
           }
         }
       }
@@ -70,6 +84,7 @@ export default defineConfig({
     include: [
       'react',
       'react-dom',
+      'react-dom/client',
       'three', 
       '@react-three/fiber', 
       '@react-three/drei', 
@@ -86,4 +101,4 @@ export default defineConfig({
     target: 'esnext',
     minify: true
   }
-})
+});

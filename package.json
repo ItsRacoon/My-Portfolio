@@ -5,11 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "NODE_ENV=production vite build",
-    "build:render": "NODE_ENV=production vite build --mode production",
+    "build": "vite build",
+    "build:win": "set NODE_ENV=production&& vite build",
+    "build:unix": "NODE_ENV=production vite build",
+    "build:render": "vite build --mode production",
     "lint": "eslint .",
     "tailwind:init": "tailwindcss init -p",
-    "preview": "vite preview --host 0.0.0.0 --port $PORT"
+    "preview": "vite preview --host 0.0.0.0 --port 3000"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
