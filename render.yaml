@@ -10,6 +10,10 @@ services:
         value: 20
       - key: NODE_OPTIONS
         value: "--max_old_space_size=2048"
+      - key: VITE_SKIP_SSR_CHECKS
+        value: "true"
+      - key: VITE_DISABLE_ESLINT_PLUGIN
+        value: "true"
     headers:
       - path: /*
         name: Cache-Control

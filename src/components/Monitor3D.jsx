@@ -1,9 +1,7 @@
 import React, { useRef, useEffect, useState, Suspense, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF, Environment, PresentationControls, useTexture } from '@react-three/drei';
-
-// Fix for useLayoutEffect warning in SSR
-const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;
+import useIsomorphicLayoutEffect from '../hooks/useIsomorphicLayoutEffect';
 import { 
   CanvasTexture, 
   LinearFilter, 
@@ -201,6 +199,11 @@ const MonitorModel = ({ scrollY }) => {
       'Curve010', 'Curve011', 'Curve012'
     ]);
     
+    // For mobile, use a smaller set of essential parts for better performance
+    const essentialParts = new Set([
+      'Cube003_1', 'Cube003_2', 'Cube001', 'Cylinder', 'Circle'
+    ]);
+    
     clonedScene.traverse((child) => {
       if (child.isMesh) {
         // Get position and size information once
@@ -242,6 +245,10 @@ const MonitorModel = ({ scrollY }) => {
             child.geometry.attributes.uv.needsUpdate = true;
           }
         }
+        // On mobile, hide more elements for better performance
+        else if (isMobile && !essentialParts.has(child.name)) {
+          child.visible = false;
+        }
         // Hide performance-heavy elements
         else if (maxDimension > 50 || 
                  worldPosition.y < -1.0 || child.position.y < -1.0 ||
@@ -267,10 +274,10 @@ const MonitorModel = ({ scrollY }) => {
           }
           
           child.castShadow = false; // Disable shadows for better performance
-          child.receiveShadow = true;
+          child.receiveShadow = isMobile ? false : true; // Disable receiveShadow on mobile
           
           // Optimize geometry once
-          if (child.geometry) {
+          if (child.geometry && !isMobile) {
             child.geometry.computeVertexNormals();
           }
         } else {
@@ -304,12 +311,16 @@ const MonitorModel = ({ scrollY }) => {
     return null;
   }
 
+  // Adjust scale and position based on device
+  const scale = isMobile ? [0.2, 0.2, 0.2] : [0.25, 0.25, 0.25];
+  const position = isMobile ? [0, -4, 0] : [0, -6, 0];
+  
   return (
     <primitive
       ref={meshRef}
       object={processedScene}
-      scale={[0.25, 0.25, 0.25]}
-      position={[0, -6, 0]}
+      scale={scale}
+      position={position}
     />
   );
 };
@@ -434,7 +445,7 @@ const Monitor3D = React.memo(() => {
         position: 'relative',
         background: 'transparent',
         height: 'auto',
-        paddingBottom: '100px',
+        paddingBottom: isMobile ? '50px' : '100px',
         paddingTop: '0',
         marginTop: '0'
       }}
@@ -443,13 +454,14 @@ const Monitor3D = React.memo(() => {
         <Canvas
         key="monitor-canvas"
         style={{ 
-          width: '1000px',
-          height: '800px',
+          width: '100%',
+          maxWidth: '1000px',
+          height: isMobile ? '400px' : '800px',
           background: 'transparent'
         }}
-        camera={{ position: [0, -1, 7], fov: 45 }}
+        camera={{ position: [0, -1, isMobile ? 9 : 7], fov: isMobile ? 50 : 45 }}
         shadows={false}
-        dpr={[1, 1.5]}
+        dpr={[1, isMobile ? 1.2 : 1.5]}
         gl={{ 
           antialias: false, 
           alpha: true,
@@ -460,7 +472,7 @@ const Monitor3D = React.memo(() => {
           depth: true
         }}
         performance={{ min: 0.5 }}
-        frameloop="demand"
+        frameloop={isMobile ? "demand" : "demand"}
         onCreated={({ gl }) => {
           try {
             // Ensure WebGL context is properly initialized

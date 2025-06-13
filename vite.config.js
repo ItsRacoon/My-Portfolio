@@ -24,6 +24,10 @@ export default defineConfig({
         manualChunks: (id) => {
           // Create separate chunks for large libraries
           if (id.includes('node_modules')) {
+            // Ensure React is loaded first
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'react-vendor'
+            }
             if (id.includes('three')) {
               return 'three'
             }
@@ -35,9 +39,6 @@ export default defineConfig({
             }
             if (id.includes('lucide-react')) {
               return 'lucide'
-            }
-            if (id.includes('react') || id.includes('react-dom')) {
-              return 'react-vendor'
             }
             // Group other vendor libraries
             return 'vendor'
@@ -67,6 +68,8 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: [
+      'react',
+      'react-dom',
       'three', 
       '@react-three/fiber', 
       '@react-three/drei', 
